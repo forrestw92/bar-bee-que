@@ -3,14 +3,19 @@ body {
   margin: 0;
 }
 .App {
-  width:100%;
-  display:flex;
+  width: 100%;
+  display: flex;
   flex-flow: row nowrap;
 }
 .sideBar {
   display: flex;
   flex-flow: column nowrap;
   width: 25%;
+  .logo {
+    display: flex;
+    justify-content: center;
+    background: #213451;
+  }
 }
 .mapContainer {
   width: 75%;

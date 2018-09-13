@@ -6,6 +6,10 @@ export default class Header extends Component {
   }
 
   render() {
-    return <React.Fragment>Header</React.Fragment>;
+    return (
+      <header className="logo">
+        <img src={Logo} alt={"Barbecue Logo"} />
+      </header>
+    );
   }
 }
