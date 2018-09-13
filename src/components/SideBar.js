@@ -9,11 +9,11 @@ export default class SideBar extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="sideBar">
         <Header />
         SideBar
         <List />
-      </React.Fragment>
+      </div>
     );
   }
 }

@@ -1,0 +1,16 @@
+body {
+  padding: 0;
+  margin: 0; }
+
+.App {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap; }
+
+.sideBar {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 25%; }
+
+.mapContainer {
+  width: 75%; }

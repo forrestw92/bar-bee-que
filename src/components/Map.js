@@ -22,7 +22,7 @@ export default class Map extends Component {
   }
   render() {
     return (
-      <React.Fragment>
+      <div className="mapContainer">
         <MapWithAMarker
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyChoZfDuBpt0PFzB2jhpitmUdOrSE76HRQ&v=3.exp"
           loadingElement={<div style={{ height: `100%` }} />}
@@ -31,7 +31,7 @@ export default class Map extends Component {
           center={this.props.center}
           markers={this.props.markers}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }
