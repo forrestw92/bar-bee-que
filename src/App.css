@@ -1,4 +1,8 @@
+html {
+  font-size: 10px; }
+
 body {
+  font-size: 1.6rem;
   padding: 0;
   margin: 0; }
 
@@ -18,3 +22,12 @@ body {
 
 .mapContainer {
   width: 75%; }
+
+form#filterForm {
+  display: flex; }
+  form#filterForm input#filter {
+    height: 4rem;
+    font-size: 2rem;
+    padding: 0 3rem 0 1rem;
+    width: 100%;
+    position: relative; }
