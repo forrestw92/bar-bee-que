@@ -8,13 +8,15 @@ body {
 
 .App {
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-flow: row nowrap; }
 
 .sideBar {
   display: flex;
   flex-flow: column nowrap;
-  width: 25%; }
+  width: 25%;
+  min-width: 30rem; }
   .sideBar .logo {
     display: flex;
     justify-content: center;
@@ -31,3 +33,23 @@ form#filterForm {
     padding: 0 3rem 0 1rem;
     width: 100%;
     position: relative; }
+
+.businessList {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 1rem; }
+  .businessList .businessCard {
+    box-shadow: 2px 2px #d0aebc;
+    border: 1px solid rgba(110, 129, 158, 0.5);
+    margin: 0.5rem; }
+    .businessList .businessCard .cardImage img {
+      width: 100%; }
+    .businessList .businessCard .cardBody .cardDetails {
+      padding: 0;
+      margin: 1rem; }
+      .businessList .businessCard .cardBody .cardDetails .detail {
+        list-style: none; }
+      .businessList .businessCard .cardBody .cardDetails .detail#name {
+        font-size: 2rem; }
