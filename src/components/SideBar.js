@@ -21,9 +21,14 @@ export default class SideBar extends Component {
         }
       );
       const { longitude, latitude } = restaurants.region.center;
+      const markers = restaurants.businesses.map(business => {
+        const { longitude, latitude } = business.coordinates;
+        return { lat: latitude, lng: longitude };
+      });
       this.props.updateState({
         restaurants: restaurants.businesses,
-        center: { lat: latitude, lng: longitude }
+        center: { lat: latitude, lng: longitude },
+        markers
       });
     } catch (error) {
       console.log(error);

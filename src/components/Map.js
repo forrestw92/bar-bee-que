@@ -1,3 +1,4 @@
+/*global google*/
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
@@ -11,7 +12,11 @@ const MapWithAMarker = withScriptjs(
     <GoogleMap defaultZoom={12} defaultCenter={props.center}>
       {props.markers &&
         props.markers.map((marker, index) => (
-          <Marker key={index} position={marker} />
+          <Marker
+            key={index}
+            position={marker}
+            animation={google.maps.Animation.DROP}
+          />
         ))}
     </GoogleMap>
   ))
