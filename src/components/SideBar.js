@@ -23,7 +23,11 @@ export default class SideBar extends Component {
       const { longitude, latitude } = restaurants.region.center;
       const markers = restaurants.businesses.map(business => {
         const { longitude, latitude } = business.coordinates;
-        return { lat: latitude, lng: longitude };
+        return {
+          position: { lat: latitude, lng: longitude },
+          name: business.name,
+          visible: true
+        };
       });
       this.props.updateState({
         restaurants: restaurants.businesses,
@@ -38,8 +42,11 @@ export default class SideBar extends Component {
     return (
       <div className="sideBar">
         <Header />
-        <SearchBar />
-        <List restaurants={this.props.restaurants} />
+        <SearchBar {...this.props} />
+        <List
+          restaurants={this.props.restaurants}
+          searchText={this.props.searchRestaurants}
+        />
       </div>
     );
   }

@@ -12,9 +12,13 @@ export default class List extends Component {
     return (
       <div className="businessList">
         {this.props.restaurants &&
-          this.props.restaurants.map((restaurant, index) => (
-            <ListItem key={index} {...restaurant} />
-          ))}
+          this.props.restaurants
+            .filter(restaurant =>
+              restaurant.name.toLowerCase().includes(this.props.searchText)
+            )
+            .map((restaurant, index) => (
+              <ListItem key={index} {...restaurant} />
+            ))}
       </div>
     );
   }

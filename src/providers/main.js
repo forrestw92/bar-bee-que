@@ -16,6 +16,7 @@ export default class Provider extends Component {
         lat: 0,
         lng: 0
       },
+      searchRestaurants: "",
       restaurants: [],
       updateState: state => this.setState(state)
     };

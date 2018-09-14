@@ -11,13 +11,21 @@ const MapWithAMarker = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap defaultZoom={12} defaultCenter={props.center}>
       {props.markers &&
-        props.markers.map((marker, index) => (
-          <Marker
-            key={index}
-            position={marker}
-            animation={google.maps.Animation.DROP}
-          />
-        ))}
+        props.markers
+          .filter(marker => marker.visible === true)
+          .map((marker, index) => (
+            <Marker
+              key={index}
+              name={marker.name}
+              position={marker.position}
+              animation={
+                props.markers.filter(marker => marker.visible === true)
+                  .length === 1
+                  ? google.maps.Animation.BOUNCE
+                  : google.maps.Animation.DROP
+              }
+            />
+          ))}
     </GoogleMap>
   ))
 );
@@ -35,6 +43,7 @@ export default class Map extends Component {
           mapElement={<div style={{ height: `100%` }} />}
           center={this.props.center}
           markers={this.props.markers}
+          count={this.props.restaurants.length}
         />
       </div>
     );
