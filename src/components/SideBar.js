@@ -26,7 +26,8 @@ export default class SideBar extends Component {
         return {
           position: { lat: latitude, lng: longitude },
           name: business.name,
-          visible: true
+          visible: true,
+          isOpen: false
         };
       });
       this.props.updateState({
@@ -43,10 +44,7 @@ export default class SideBar extends Component {
       <div className="sideBar">
         <Header />
         <SearchBar {...this.props} />
-        <List
-          restaurants={this.props.restaurants}
-          searchText={this.props.searchRestaurants}
-        />
+        <List {...this.props} />
       </div>
     );
   }

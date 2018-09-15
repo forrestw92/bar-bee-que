@@ -6,7 +6,7 @@ export default class SearchBar extends Component {
   }
 
   handleInput = e => {
-    const searchRestaurants = e.target.value.toLowerCase()
+    const searchText = e.target.value.toLowerCase()
 
     let filteredMarkers = this.props.markers
       .filter(
@@ -20,7 +20,7 @@ export default class SearchBar extends Component {
       )
       .map(marker => (marker.visible = true));
     this.props.updateState({
-      searchRestaurants,
+      searchText,
       markers: Object.assign(
         this.props.markers,
         Object.assign({ filteredMarkers }, { unfilteredMarkers })

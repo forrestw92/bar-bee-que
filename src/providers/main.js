@@ -11,12 +11,12 @@ export default class Provider extends Component {
         lat: 30.2672,
         lng: -97.7431
       },
-      zoom: 11,
-      location: {
-        lat: 0,
-        lng: 0
+      defaultCenter: {
+        lat: 30.2672,
+        lng: -97.7431
       },
-      searchRestaurants: "",
+      zoom: 11,
+      searchText: "",
       restaurants: [],
       updateState: state => this.setState(state)
     };

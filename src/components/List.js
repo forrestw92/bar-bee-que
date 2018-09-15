@@ -8,21 +8,43 @@ export default class List extends Component {
   componentDidMount() {
     console.log(this.props.restaurants);
   }
+  handleFocus = (e, id) => {
+    const closeMarkers = this.props.markers.map(marker => {
+      marker.isOpen = false;
+      return marker;
+    });
+    const openMarker = this.props.markers.find(
+      marker => marker.name === e.props.name
+    );
+    openMarker.isOpen = true;
+    this.props.updateState({
+      markers: Object.assign(closeMarkers, openMarker),
+      center: openMarker.position,
+      zoom: 15
+    });
+  };
   render() {
     return (
-      <div className="businessList">
+      <ul className="businessList" tabIndex={0}>
         {this.props.restaurants &&
           this.props.restaurants
             .filter(restaurant =>
               restaurant.name.toLowerCase().includes(this.props.searchText)
             )
             .map((restaurant, index) => (
-              <ListItem key={index} {...restaurant} />
+              <ListItem
+                key={index}
+                index={index}
+                {...restaurant}
+                handleFocus={this.handleFocus}
+              />
             ))}
-      </div>
+      </ul>
     );
   }
 }
 List.propTypes = {
-  restaurants: PropTypes.array
+  restaurants: PropTypes.array,
+  searchText: PropTypes.string,
+  markers: PropTypes.array
 };

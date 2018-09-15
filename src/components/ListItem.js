@@ -6,7 +6,7 @@ export default class ListItem extends Component {
 
   render() {
     return (
-      <div className="businessCard">
+      <li className="businessCard" tabIndex={0} onFocus={() => this.props.handleFocus(this,this.props.index)}>
         <div className="cardImage">
           <img src={this.props.image_url} />
         </div>
@@ -25,7 +25,7 @@ export default class ListItem extends Component {
             </li>
           </ul>
         </div>
-      </div>
+      </li>
     );
   }
 }
