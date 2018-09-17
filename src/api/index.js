@@ -36,7 +36,7 @@ export default class YelpApi {
    * @returns {*}
    */
   static lookup(alias) {
-    return Helper.simpleFetch("/lookup", "POST", alias);
+    return Helper.simpleFetch("/lookup", "POST", { alias });
   }
 
   /**

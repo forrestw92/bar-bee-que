@@ -7,7 +7,6 @@ import {
   withGoogleMap,
   withScriptjs
 } from "react-google-maps";
-import InfoBox from "./InfoBox";
 const MapWithAMarker = withScriptjs(
   withGoogleMap(props => (
     <GoogleMap
@@ -31,37 +30,20 @@ const MapWithAMarker = withScriptjs(
                     ? google.maps.Animation.BOUNCE
                     : google.maps.Animation.DROP
                 }
-              >
-                <InfoBox
-                  isOpen={marker.isOpen}
-                  position={marker.position}
-                  name={marker.name}
-                  handleClose={() => {
-                    props.updateState({
-                      zoom: 11,
-                      center: props.defaultCenter
-                    });
-                  }}
-                />
-              </Marker>
+              />
             );
           })}
     </GoogleMap>
   ))
 );
 export default class Index extends Component {
-  constructor() {
-    super();
-  }
-  componentWillReciveProps(){
-
-  }
   clickHandler = clickedMarker => {
     clickedMarker.isOpen = !clickedMarker.isOpen;
     this.props.updateState({
       markers: Object.assign(this.props.markers, clickedMarker),
       center: clickedMarker.position,
-      zoom: 15
+      zoom: 15,
+      singleDetails: true
     });
   };
   render() {
@@ -86,5 +68,7 @@ export default class Index extends Component {
 Index.propTypes = {
   center: PropTypes.object.isRequired,
   markers: PropTypes.array.isRequired,
-  updateState: PropTypes.func.isRequired
+  updateState: PropTypes.func.isRequired,
+  zoom: PropTypes.number.isRequired,
+  defaultCenter: PropTypes.object.isRequired
 };

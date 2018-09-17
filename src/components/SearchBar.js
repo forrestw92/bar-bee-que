@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 export default class SearchBar extends Component {
-  constructor() {
-    super();
-  }
-
   handleInput = e => {
-    const searchText = e.target.value.toLowerCase()
+    const searchText = e.target.value.toLowerCase();
 
     let filteredMarkers = this.props.markers
       .filter(
@@ -29,7 +25,7 @@ export default class SearchBar extends Component {
   };
   render() {
     return (
-      <form id="filterForm">
+      <form id="filterForm" onSubmit={e => e.preventDefault()}>
         <input
           type="text"
           role="search"

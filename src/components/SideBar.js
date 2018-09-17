@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Header from "./Header";
-import List from "./List";
+import List from "./BusinessList/List";
 import SearchBar from "./SearchBar";
 import YelpApi from "../api";
 export default class SideBar extends Component {
-  constructor() {
-    super();
-  }
   async componentDidMount() {
     try {
+      console.log("SDFDSF")
       const restaurants = await YelpApi.search(
         {},
         {
@@ -26,6 +24,7 @@ export default class SideBar extends Component {
         return {
           position: { lat: latitude, lng: longitude },
           name: business.name,
+          alias: business.alias,
           visible: true,
           isOpen: false
         };
@@ -39,11 +38,12 @@ export default class SideBar extends Component {
       console.log(error);
     }
   }
+
   render() {
     return (
       <div className="sideBar">
-        <Header />
-        <SearchBar {...this.props} />
+        <Header {...this.props} />
+        {!this.props.singleDetails && <SearchBar {...this.props} />}
         <List {...this.props} />
       </div>
     );
@@ -51,5 +51,7 @@ export default class SideBar extends Component {
 }
 SideBar.propTypes = {
   updateState: PropTypes.func.isRequired,
-  restaurants: PropTypes.array
+  restaurants: PropTypes.array,
+  singleDetails: PropTypes.bool.isRequired,
+  singleRestaurant: PropTypes.string.isRequired
 };
