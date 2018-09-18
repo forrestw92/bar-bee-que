@@ -77,11 +77,14 @@ form#filterForm {
           text-align: center;
           margin-bottom: 2rem;
           .button {
-            -webkit-appearance:  none;
-            background: #d0aebc;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: #6e819e;
             border: 0;
             font-size: 2.5rem;
-            color: black;
+            color: #f6f4f5;
+            text-shadow: 1px 1px #213451;
             box-shadow: 2px 2px #213451;
             transition: all .05s;
             &:hover {

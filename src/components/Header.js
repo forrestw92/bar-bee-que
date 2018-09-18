@@ -11,6 +11,7 @@ export default class Header extends Component {
     };
   }
   handleClick = () => {
+    this.props.openAllMarkers();
     this.props.updateState({
       singleDetails: false,
       center: this.props.defaultCenter,
@@ -19,7 +20,7 @@ export default class Header extends Component {
     });
   };
   componentDidUpdate(prevProps, prevState) {
-    if(this.btn) {
+    if (this.btn) {
       this.btn.focus();
     }
   }

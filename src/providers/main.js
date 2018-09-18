@@ -20,7 +20,21 @@ export default class Provider extends Component {
       singleDetails: false,
       singleRestaurant: "",
       restaurants: [],
-
+      openAllMarkers: () => {
+        const newMarkers = this.state.markers
+          .filter(marker =>
+            marker.name
+              .toLowerCase()
+              .includes(this.state.searchText.toLowerCase())
+          )
+          .map(marker => {
+            marker.visible = true;
+            return marker;
+          });
+        this.setState({
+          markers: Object.assign(this.state.markers, newMarkers)
+        });
+      },
       hideAllMarkers: () => {
         const newMarkers = this.state.markers.map(marker => {
           marker.visible = false;
