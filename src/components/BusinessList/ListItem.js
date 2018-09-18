@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import StarRating from "../StarRating";
 import DollarSign from "../../images/dollar-sign.svg";
+import LazyLoad from "react-lazyload";
+
 export default class ListItem extends Component {
   render() {
     return (
@@ -11,8 +13,11 @@ export default class ListItem extends Component {
         onFocus={() => this.props.handleFocus(this)}
       >
         <div className="cardImage">
-          <img src={this.props.image_url} alt={""} />
+          <LazyLoad height={200} overflow={true} once>
+            <img src={this.props.image_url} alt={""} />
+          </LazyLoad>
         </div>
+
         <div className="cardBody">
           <ul className="cardDetails">
             <li className="detail" id="name">

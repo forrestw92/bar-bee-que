@@ -88,9 +88,7 @@ export default class BusinessDetails extends Component {
                           details.location.display_address.join(",")
                         }
                       >
-                        <pre>
-                          {details.location.display_address.join("\n")}
-                        </pre>
+                        <pre>{details.location.display_address.join("\n")}</pre>
                       </a>
                     )}
                 </li>

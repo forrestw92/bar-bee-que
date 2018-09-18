@@ -12,6 +12,7 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-google-maps": "^9.4.5",
+    "react-lazyload": "^2.3.0",
     "react-scripts": "1.1.5",
     "recompose": "^0.30.0"
   },
