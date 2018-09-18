@@ -4,17 +4,7 @@ import ListItem from "./ListItem";
 import BusinessDetails from "../BusinessDetails";
 
 export default class List extends Component {
-  handleKeyInput = (info, e) => {
-    if (e.key === "Enter") {
-      this.props.updateMarker(info.props.name, true, true);
-      this.props.updateState({
-        singleRestaurant: info.props.alias,
-        singleDetails: true
-      });
-    }
-  };
   handleClick = info => {
-    console.log(info.props.alias);
     this.props.updateState({
       singleRestaurant: info.props.alias,
       singleDetails: true
@@ -51,7 +41,6 @@ export default class List extends Component {
                 {...restaurant}
                 handleClick={this.handleClick}
                 handleFocus={this.handleFocus}
-                handleKeyInput={this.handleKeyInput}
               />
             ))}
         {this.props.singleDetails && <BusinessDetails {...this.props} />}

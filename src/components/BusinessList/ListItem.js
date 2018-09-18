@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import StarRating from "../StarRating";
+import DollarSign from "../../images/dollar-sign.svg";
 export default class ListItem extends Component {
   render() {
     return (
@@ -7,8 +9,6 @@ export default class ListItem extends Component {
         className="businessCard"
         tabIndex={0}
         onFocus={() => this.props.handleFocus(this)}
-        onClick={() => this.props.handleClick(this)}
-        onKeyUp={e => this.props.handleKeyInput(this, e)}
       >
         <div className="cardImage">
           <img src={this.props.image_url} alt={""} />
@@ -19,16 +19,28 @@ export default class ListItem extends Component {
               {this.props.name}
             </li>
             <li className="detail">
-              Rating:
-              {this.props.rating}(
+              <StarRating rating={this.props.rating} />(
               <span aria-label={"Review Count" + this.props.review_count}>
                 {this.props.review_count}
               </span>
               )
             </li>
             <li className="detail">
-              Price:
-              {this.props.price}
+              <span
+                aria-label={"Price " + this.props.price.split("").join(" ")}
+              >
+                {this.props.price.split("").map((price, idx) => (
+                  <img key={idx} src={DollarSign} alt={""} />
+                ))}
+              </span>
+            </li>
+            <li className="detail">
+              <button
+                className="button"
+                onClick={() => this.props.handleClick(this)}
+              >
+                View Details
+              </button>
             </li>
           </ul>
         </div>
@@ -42,7 +54,6 @@ ListItem.propTypes = {
   name: PropTypes.string.isRequired,
   image_url: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  handleKeyInput: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
   handleFocus: PropTypes.func.isRequired
 };

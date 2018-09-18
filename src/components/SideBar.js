@@ -5,9 +5,15 @@ import List from "./BusinessList/List";
 import SearchBar from "./SearchBar";
 import YelpApi from "../api";
 export default class SideBar extends Component {
+  constructor() {
+    super();
+    this.state = {
+      error: false
+    };
+  }
+
   async componentDidMount() {
     try {
-      console.log("SDFDSF")
       const restaurants = await YelpApi.search(
         {},
         {
@@ -35,7 +41,7 @@ export default class SideBar extends Component {
         markers
       });
     } catch (error) {
-      console.log(error);
+      this.setState({ error: true });
     }
   }
 
@@ -44,7 +50,8 @@ export default class SideBar extends Component {
       <div className="sideBar">
         <Header {...this.props} />
         {!this.props.singleDetails && <SearchBar {...this.props} />}
-        <List {...this.props} />
+        {!this.state.error && <List {...this.props} />}
+        {this.state.error && <h1>Error! Please Reload Page.</h1>}
       </div>
     );
   }

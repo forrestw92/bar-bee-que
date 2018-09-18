@@ -18,6 +18,11 @@ export default class Header extends Component {
       restaurantDetails: {}
     });
   };
+  componentDidUpdate(prevProps, prevState) {
+    if(this.btn) {
+      this.btn.focus();
+    }
+  }
   //https://davidwalsh.name/react-autofocus
   render() {
     return (
