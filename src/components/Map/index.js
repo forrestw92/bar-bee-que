@@ -38,12 +38,13 @@ const MapWithAMarker = withScriptjs(
 );
 export default class Index extends Component {
   clickHandler = clickedMarker => {
-    clickedMarker.isOpen = !clickedMarker.isOpen;
+    this.props.hideAllMarkers();
+    this.props.updateMarker(clickedMarker.name, true, true);
+    this.props.centerMapOnMarker(clickedMarker.name);
     this.props.updateState({
-      markers: Object.assign(this.props.markers, clickedMarker),
-      center: clickedMarker.position,
       zoom: 15,
-      singleDetails: true
+      singleDetails: true,
+      singleRestaurant: clickedMarker.alias
     });
   };
   render() {
@@ -66,6 +67,9 @@ export default class Index extends Component {
   }
 }
 Index.propTypes = {
+  hideAllMarkers: PropTypes.func.isRequired,
+  updateMarker: PropTypes.func.isRequired,
+  centerMapOnMarker: PropTypes.func.isRequired,
   center: PropTypes.object.isRequired,
   markers: PropTypes.array.isRequired,
   updateState: PropTypes.func.isRequired,
