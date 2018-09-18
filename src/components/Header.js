@@ -24,7 +24,6 @@ export default class Header extends Component {
       this.btn.focus();
     }
   }
-  //https://davidwalsh.name/react-autofocus
   render() {
     return (
       <header className="logo">
