@@ -24,11 +24,13 @@ export default class ListItem extends Component {
               {this.props.name}
             </li>
             <li className="detail">
-              <StarRating rating={this.props.rating} />(
-              <span aria-label={"Review Count" + this.props.review_count}>
-                {this.props.review_count}
+              <StarRating rating={this.props.rating} />
+              <span
+                aria-label={"Review Count" + this.props.review_count}
+                id="review-count"
+              >
+                ({this.props.review_count})
               </span>
-              )
             </li>
             <li className="detail">
               <span

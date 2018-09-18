@@ -4,19 +4,27 @@ import ListItem from "./ListItem";
 import BusinessDetails from "../BusinessDetails";
 
 export default class List extends Component {
-  handleClick = info => {
-    this.props.updateState({
-      singleRestaurant: info.props.alias,
-      singleDetails: true
-    });
-  };
-  handleFocus = e => {
+  loadMarker = (info, loadInfo) => {
     this.props.hideAllMarkers();
-    this.props.updateMarker(e.props.name, true, true);
-    this.props.centerMapOnMarker(e.props.name);
-    this.props.updateState({
-      zoom: 15
-    });
+    this.props.updateMarker(info.props.name, true, true);
+    this.props.centerMapOnMarker(info.props.name);
+    if (loadInfo) {
+      this.props.updateState({
+        zoom: 15,
+        singleDetails: true,
+        singleRestaurant: info.props.alias
+      });
+    } else {
+      this.props.updateState({
+        zoom: 15
+      });
+    }
+  };
+  handleClick = info => {
+    this.loadMarker(info, true);
+  };
+  handleFocus = info => {
+    this.loadMarker(info);
   };
   render() {
     return (

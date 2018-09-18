@@ -1,6 +1,6 @@
 class Helper {
   static baseURL() {
-    return "https://yelp.apie.xyz/";
+    return "https://yelp.apie.xyz";
   }
   static headers() {
     return {

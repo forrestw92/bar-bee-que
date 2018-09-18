@@ -67,11 +67,13 @@ export default class BusinessDetails extends Component {
                   {details.name}
                 </li>
                 <li className="detail">
-                  <StarRating rating={details.rating} />(
-                  <span aria-label={"Review Count" + details.review_count}>
-                    {details.review_count}
+                  <StarRating rating={details.rating} />
+                  <span
+                    aria-label={"Review Count" + details.review_count}
+                    id="review-count"
+                  >
+                    ({details.review_count})
                   </span>
-                  )
                 </li>
                 <li className="detail">
                   {details.price.split("$").map((price, idx) => (

@@ -23,6 +23,7 @@ body {
   min-width: 30rem;
   max-width: 45rem;
   background: #f6f4f5;
+  transition: all .3s;
   .logo {
     display: flex;
     justify-content: center;
@@ -53,6 +54,7 @@ form#filterForm {
   padding: 1rem;
   margin: 0;
   align-items: center;
+
   .businessCard {
     background: white;
     max-width: 35rem;
@@ -76,6 +78,10 @@ form#filterForm {
           list-style: none;
           text-align: center;
           margin-bottom: 2rem;
+          #review-count {
+            position: relative;
+            top: -1rem;
+          }
           .button {
             -webkit-appearance: none;
             -moz-appearance: none;
@@ -86,7 +92,7 @@ form#filterForm {
             color: #f6f4f5;
             text-shadow: 1px 1px #213451;
             box-shadow: 2px 2px #213451;
-            transition: all .05s;
+            transition: all 0.05s;
             &:hover {
               box-shadow: 2px 2px 2px #213451;
             }
@@ -97,6 +103,7 @@ form#filterForm {
           border-bottom: 1px solid #508b00;
           margin: 1rem;
         }
+
         .detail#phone {
           text-align: center;
           font-size: 2rem;
@@ -150,4 +157,13 @@ form#filterForm {
   margin: auto;
   width: 100%;
   height: auto;
+}
+@media only screen and (max-width: 960px) {
+  .mapContainer {
+    width: 100%;
+  }
+  .sideBar {
+    width: 0;
+    min-width: 0px;
+  }
 }
