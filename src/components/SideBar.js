@@ -4,6 +4,7 @@ import Header from "./Header";
 import List from "./BusinessList/List";
 import SearchBar from "./SearchBar";
 import YelpApi from "../api";
+import MenuOpener from "./MenuOpener";
 export default class SideBar extends Component {
   constructor() {
     super();
@@ -47,7 +48,8 @@ export default class SideBar extends Component {
 
   render() {
     return (
-      <div className="sideBar">
+      <div className={this.props.menuOpened ? "sideBar" : "sideBar closed"}>
+        <MenuOpener {...this.props} />
         <Header {...this.props} />
         {!this.props.singleDetails && <SearchBar {...this.props} />}
         {!this.state.error && <List {...this.props} />}
@@ -57,6 +59,7 @@ export default class SideBar extends Component {
   }
 }
 SideBar.propTypes = {
+  menuOpened: PropTypes.bool.isRequired,
   updateState: PropTypes.func.isRequired,
   restaurants: PropTypes.array,
   singleDetails: PropTypes.bool.isRequired,

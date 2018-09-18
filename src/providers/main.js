@@ -6,6 +6,7 @@ export default class Provider extends Component {
     super();
     this.state = {
       error: "",
+      menuOpened: true,
       markers: [],
       center: {
         lat: 30.2672,
