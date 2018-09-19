@@ -1,0 +1,170 @@
+html {
+  font-size: 10px; }
+
+body {
+  font-size: 1.6rem;
+  padding: 0;
+  margin: 0; }
+
+html,
+body {
+  font-family: "Roboto Condensed", sans-serif; }
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: row nowrap; }
+
+.sideBar {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 25%;
+  min-width: 30rem;
+  max-width: 45rem;
+  background: #f6f4f5;
+  position: relative;
+  transition: all 0.3s; }
+  .sideBar .logo {
+    display: flex;
+    justify-content: center;
+    background: #213451;
+    position: relative; }
+
+.sideBar.closed {
+  width: 0;
+  min-width: 0px; }
+
+.mapContainer {
+  width: 100%; }
+
+form#filterForm {
+  display: flex;
+  margin-bottom: 0.5rem; }
+  form#filterForm input#filter {
+    height: 4rem;
+    font-size: 2rem;
+    padding: 0 3rem 0 1rem;
+    width: 100%;
+    position: relative; }
+
+.businessList {
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
+  overflow-y: scroll;
+  padding: 1rem;
+  margin: 0;
+  align-items: center; }
+  .businessList .businessCard {
+    background: white;
+    max-width: 35rem;
+    box-shadow: 2px 2px #213451;
+    border: 1px solid rgba(110, 129, 158, 0.5);
+    margin: 0.5rem 0.5rem 2rem 0.5rem;
+    list-style: none;
+    padding: 0; }
+    .businessList .businessCard .cardImage {
+      padding: 0.5rem; }
+      .businessList .businessCard .cardImage img {
+        width: 100%;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); }
+    .businessList .businessCard .cardBody .cardDetails {
+      padding: 0;
+      margin: 1rem; }
+      .businessList .businessCard .cardBody .cardDetails .detail {
+        list-style: none;
+        text-align: center;
+        margin-bottom: 2rem; }
+        .businessList .businessCard .cardBody .cardDetails .detail #review-count {
+          position: relative;
+          top: -1rem; }
+        .businessList .businessCard .cardBody .cardDetails .detail .button {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          background: #6e819e;
+          border: 0;
+          font-size: 2.5rem;
+          color: #f6f4f5;
+          text-shadow: 1px 1px #213451;
+          box-shadow: 2px 2px #213451;
+          transition: all 0.05s; }
+          .businessList .businessCard .cardBody .cardDetails .detail .button:hover {
+            box-shadow: 2px 2px 2px #213451; }
+      .businessList .businessCard .cardBody .cardDetails .detail#name {
+        font-size: 2rem;
+        border-bottom: 1px solid #508b00;
+        margin: 1rem; }
+      .businessList .businessCard .cardBody .cardDetails .detail#phone {
+        text-align: center;
+        font-size: 2rem; }
+      .businessList .businessCard .cardBody .cardDetails .businessHours {
+        padding: 1rem;
+        margin: 1rem;
+        box-shadow: 1px 1px 5px -2px #6e819e; }
+        .businessList .businessCard .cardBody .cardDetails .businessHours .day {
+          font-weight: bold;
+          font-size: 1.7rem;
+          line-height: 2.5rem;
+          position: absolute; }
+        .businessList .businessCard .cardBody .cardDetails .businessHours .detail {
+          justify-content: space-between;
+          flex-flow: column wrap;
+          padding: 1rem;
+          text-align: initial;
+          margin-bottom: 0;
+          position: relative; }
+        .businessList .businessCard .cardBody .cardDetails .businessHours .hours {
+          display: flex;
+          justify-content: flex-end;
+          line-height: 2.5rem; }
+
+.button#back-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: inherit;
+  border: 0;
+  position: absolute;
+  right: 0;
+  height: 45px;
+  width: 45px; }
+  .button#back-button img {
+    width: 100%;
+    height: 100%; }
+
+.loading {
+  margin: auto;
+  width: 100%;
+  height: auto; }
+
+.menu {
+  width: 10rem;
+  position: absolute;
+  height: 5rem;
+  left: 100%;
+  top: 60px;
+  background: rgba(110, 129, 158, 0.6);
+  z-index: 2;
+  border-radius: 3px;
+  transition: transform 0.25s; }
+  .menu .opener {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: inherit;
+    border: 0;
+    width: 100%;
+    height: 100%; }
+    .menu .opener #arrows {
+      width: 100%;
+      height: 100%; }
+
+.menu.closed {
+  width: 4rem; }
+  .menu.closed .opener #arrows {
+    transform: rotate(180deg); }
+  @media only screen and (max-width: 385px) {
+    .menu.closed {
+      left: 86.5%; } }
