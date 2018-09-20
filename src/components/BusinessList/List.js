@@ -6,7 +6,7 @@ import BusinessDetails from "../BusinessDetails";
 export default class List extends Component {
   loadMarker = (info, loadInfo) => {
     this.props.hideAllMarkers();
-    this.props.updateMarker(info.props.name, true, true);
+    this.props.updateMarker(info.props.name, true);
     this.props.centerMapOnMarker(info.props.name);
     if (loadInfo) {
       this.props.updateState({

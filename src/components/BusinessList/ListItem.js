@@ -14,7 +14,10 @@ export default class ListItem extends Component {
       >
         <div className="cardImage">
           <LazyLoad height={200} overflow={true} once>
-            <img src={this.props.image_url} alt={""} />
+            <img
+              src={this.props.image_url}
+              alt={"Related To Restaurant. Food,Art,Ect."}
+            />
           </LazyLoad>
         </div>
 

@@ -23,6 +23,11 @@ export default class BusinessDetails extends Component {
     };
   }
 
+  /**
+   * Converts 24 hour time to 12 hour time with suffix.
+   * @param {string} time
+   * @returns {string}
+   */
   t24to12 = time => {
     const tTime = { H: time.substr(0, 2), M: time.substr(2, 4) };
     const H = parseInt(tTime.H, 10) % 12;
@@ -59,7 +64,7 @@ export default class BusinessDetails extends Component {
         {details.name && (
           <li className="businessCard" tabIndex={0}>
             <div className="cardImage">
-              <img src={details.image_url} alt={""} />
+              <img src={details.image_url} alt={"Related To Restaurant. Food,Art,Ect."} />
             </div>
             <div className="cardBody">
               <ul className="cardDetails">

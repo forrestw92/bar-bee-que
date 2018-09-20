@@ -37,9 +37,15 @@ const MapWithAMarker = withScriptjs(
   ))
 );
 export default class Index extends Component {
+  constructor() {
+    super();
+    this.state = {
+      error: false
+    };
+  }
   clickHandler = clickedMarker => {
     this.props.hideAllMarkers();
-    this.props.updateMarker(clickedMarker.name, true, true);
+    this.props.updateMarker(clickedMarker.name, true);
     this.props.centerMapOnMarker(clickedMarker.name);
     this.props.updateState({
       zoom: 15,
@@ -47,21 +53,29 @@ export default class Index extends Component {
       singleRestaurant: clickedMarker.alias
     });
   };
+  componentDidMount() {
+    window.gm_authFailure = () => {
+      this.setState({ error: true });
+    };
+  }
   render() {
     return (
       <div className="mapContainer">
-        <MapWithAMarker
-          googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyChoZfDuBpt0PFzB2jhpitmUdOrSE76HRQ&v=3.exp"
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `100vh` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          center={this.props.center}
-          markers={this.props.markers}
-          clickHandler={this.clickHandler}
-          zoom={this.props.zoom}
-          updateState={this.props.updateState}
-          defaultCenter={this.props.defaultCenter}
-        />
+        {!this.state.error && (
+          <MapWithAMarker
+            googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyChoZfDuBpt0PFzB2jhpitmUdOrSE76HRQ&v=3.exp"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `100vh` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
+            center={this.props.center}
+            markers={this.props.markers}
+            clickHandler={this.clickHandler}
+            zoom={this.props.zoom}
+            updateState={this.props.updateState}
+            defaultCenter={this.props.defaultCenter}
+          />
+        )}
+        <h1 style={{ textAlign: "center" }}>Error Loading Google Maps</h1>
       </div>
     );
   }

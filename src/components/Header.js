@@ -44,6 +44,7 @@ export default class Header extends Component {
   }
 }
 Header.propTypes = {
+  openAllMarkers: PropTypes.func.isRequired,
   singleDetails: PropTypes.bool.isRequired,
   updateState: PropTypes.func.isRequired,
   defaultCenter: PropTypes.object.isRequired
