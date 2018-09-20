@@ -75,7 +75,9 @@ export default class Index extends Component {
             defaultCenter={this.props.defaultCenter}
           />
         )}
-        <h1 style={{ textAlign: "center" }}>Error Loading Google Maps</h1>
+        {this.state.error && (
+          <h1 style={{ textAlign: "center" }}>Error Loading Google Maps</h1>
+        )}
       </div>
     );
   }
